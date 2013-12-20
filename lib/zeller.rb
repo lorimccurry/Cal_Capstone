@@ -1,6 +1,0 @@
-
-
-class Zeller
-
-
-end
