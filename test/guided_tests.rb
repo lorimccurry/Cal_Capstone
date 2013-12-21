@@ -3,3 +3,4 @@ $LOAD_PATH << "lib"
 
 require 'test_month'
 require 'test_year'
+require 'test_zeller'
