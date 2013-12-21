@@ -17,12 +17,6 @@ class Zeller
       month += 12
     end
 
-    day_one = 1
-    day_of_week_progression = (((month + 1)*26)/10).floor
-    leap_year_add_day = (year/4).floor
-    century = 6*((year/100).floor)
-    leap_century = (year/400).floor
-
-    day_week = (day_one + day_of_week_progression + year + leap_year_add_day + century + leap_century) % 7
+    day_one = (1 + ((month + 1)*26)/10 + year + (year/4) + 6*(year/100) + (year/400)) % 7
   end
 end
