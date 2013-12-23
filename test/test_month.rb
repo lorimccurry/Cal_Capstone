@@ -127,4 +127,31 @@ EOS
     assert_equal(expected.chomp, new_month.weeks)
   end
 
+  def test_22_test_printing_first_week_5_2012
+    new_month = Month.new(5, 2012)
+    expected = <<EOS
+       1  2  3  4  5
+EOS
+    assert_equal(expected.chomp, new_month.weeks)
+  end
+
+  def test_23_test_printing_first_week_3_2012
+    new_month = Month.new(3, 2012)
+    expected = <<EOS
+             1  2  3
+EOS
+    assert_equal(expected.chomp, new_month.weeks)
+  end
+
+  def test_24_test_printing_first_week_3_2012
+    new_month = Month.new(10, 2012)
+    expected = <<EOS
+    1  2  3  4  5  6
+EOS
+    assert_equal(expected.chomp, new_month.weeks)
+  end
+
+
+
+
 end

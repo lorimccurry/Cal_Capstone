@@ -71,8 +71,23 @@ class Month
   end
 
   def weeks
+    day_one = nil
+    if zeller == 0
+      day_one = (self.zeller + 6)
+    else
+      day_one = (self.zeller - 1)
+    end
+
+    add_space = "  "
+
+    day_array = self.month_array
+    day_one.times do
+      day_array.unshift(add_space)
+    end
+
     row_string = "%s %s %s %s %s %s %s"
-    row_string % self.month_array
+    row_string % day_array
+
   end
 
 end
