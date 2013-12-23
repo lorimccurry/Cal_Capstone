@@ -43,7 +43,7 @@ class TestMonth < MiniTest::Unit::TestCase
   #   assert_equal(0, new_month.zeller)
   # end
 
-  def test_09_test_month_name_conversion_January
+  def test_09_test_head_rows_January_2012
     new_month = Month.new(1, 2012)
     expected = <<EOS
     January 2012
@@ -52,7 +52,7 @@ EOS
     assert_equal(expected.chomp, new_month.head_rows)
   end
 
-  def test_10_test_month_name_conversion_May
+  def test_10_test_head_rows_May_2012
     new_month = Month.new(5, 2012)
     expected = <<EOS
       May 2012
@@ -90,5 +90,41 @@ EOS
     new_month = Month.new(2, 2000)
     assert_equal(29, new_month.month_days)
   end
+
+  def test_17_formatted_month_array_1_2012
+    new_month = Month.new(1, 2012)
+    num_days = new_month.month_days
+    assert_equal([' 1', ' 2', ' 3', ' 4', ' 5', ' 6', ' 7', ' 8', ' 9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'],
+      new_month.month_array)
+  end
+
+  def test_17_formatted_month_array_2_2012
+    new_month = Month.new(2, 2000)
+    num_days = new_month.month_days
+    assert_equal([' 1', ' 2', ' 3', ' 4', ' 5', ' 6', ' 7', ' 8', ' 9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29'],
+      new_month.month_array)
+  end
+
+  def test_17_formatted_month_array_1_2012
+    new_month = Month.new(2, 1900)
+    num_days = new_month.month_days
+    assert_equal([' 1', ' 2', ' 3', ' 4', ' 5', ' 6', ' 7', ' 8', ' 9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28'],
+      new_month.month_array)
+  end
+
+  def test_17_formatted_month_array_1_2012
+    new_month = Month.new(9, 2012)
+    num_days = new_month.month_days
+    assert_equal([' 1', ' 2', ' 3', ' 4', ' 5', ' 6', ' 7', ' 8', ' 9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30'],
+      new_month.month_array)
+  end
+
+#   def test_17_test_printing_first_week_1_2012
+#     new_month = Month.new(1, 2012)
+#     expected = <<EOS
+#  1  2  3  4  5  6  7
+# EOS
+#     assert_equal(expected, new_month.weeks)
+#   end
 
 end

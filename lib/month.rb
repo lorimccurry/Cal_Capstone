@@ -57,5 +57,17 @@ class Month
     end
   end
 
+  def month_array
+    num_days = self.month_days
+    month_array = (1..num_days).to_a
+
+    formatted_array = month_array.map do |num|
+      if num < 10
+        " " + num.to_s
+      else
+        num.to_s
+      end
+    end
+  end
 
 end
