@@ -70,4 +70,9 @@ class Month
     end
   end
 
+  def weeks
+    row_string = "%s %s %s %s %s %s %s"
+    row_string % self.month_array
+  end
+
 end
