@@ -123,11 +123,10 @@ EOS
     day_one = new_month.convert_zeller
     add_space = "  "
     day_array = new_month.month_array
-    new_month.first_week(day_one, add_space, day_array)
     expected = <<EOS
  1  2  3  4  5  6  7
 EOS
-    assert_equal(expected.chomp, new_month.weeks)
+    assert_equal(expected.chomp, new_month.first_week(day_one, add_space, day_array))
   end
 
   def test_22_test_printing_first_week_5_2012
@@ -135,11 +134,10 @@ EOS
     day_one = new_month.convert_zeller
     add_space = "  "
     day_array = new_month.month_array
-    new_month.first_week(day_one, add_space, day_array)
     expected = <<EOS
        1  2  3  4  5
 EOS
-    assert_equal(expected.chomp, new_month.weeks)
+    assert_equal(expected.chomp, new_month.first_week(day_one, add_space, day_array))
   end
 
   def test_23_test_printing_first_week_3_2012
@@ -147,11 +145,10 @@ EOS
     day_one = new_month.convert_zeller
     add_space = "  "
     day_array = new_month.month_array
-    new_month.first_week(day_one, add_space, day_array)
     expected = <<EOS
              1  2  3
 EOS
-    assert_equal(expected.chomp, new_month.weeks)
+    assert_equal(expected.chomp, new_month.first_week(day_one, add_space, day_array))
   end
 
   def test_24_test_printing_first_week_10_2012
@@ -159,11 +156,10 @@ EOS
     day_one = new_month.convert_zeller
     add_space = "  "
     day_array = new_month.month_array
-    new_month.first_week(day_one, add_space, day_array)
     expected = <<EOS
     1  2  3  4  5  6
 EOS
-    assert_equal(expected.chomp, new_month.weeks)
+    assert_equal(expected.chomp, new_month.first_week(day_one, add_space, day_array))
   end
 
   def test_25_test_printing_first_week_9_2012
@@ -171,11 +167,10 @@ EOS
     day_one = new_month.convert_zeller
     add_space = "  "
     day_array = new_month.month_array
-    new_month.first_week(day_one, add_space, day_array)
     expected = <<EOS
                    1
 EOS
-    assert_equal(expected.chomp, new_month.weeks)
+    assert_equal(expected.chomp, new_month.first_week(day_one, add_space, day_array))
   end
 
   def test_26_test_printing_first_and_middle_weeks_1_2012
