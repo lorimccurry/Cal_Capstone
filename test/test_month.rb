@@ -123,7 +123,6 @@ EOS
     day_one = new_month.convert_zeller
     add_space = "  "
     day_array = new_month.month_array
-    # new_month.weeks
     new_month.first_week(day_one, add_space, day_array)
     expected = <<EOS
  1  2  3  4  5  6  7
