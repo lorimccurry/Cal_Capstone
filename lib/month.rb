@@ -71,23 +71,61 @@ class Month
   end
 
   def weeks
-    day_one = nil
-    if zeller == 0
-      day_one = (self.zeller + 6)
-    else
-      day_one = (self.zeller - 1)
-    end
+    day_one = convert_zeller
 
     add_space = "  "
-
     day_array = self.month_array
+
+    first = first_week(day_one, add_space, day_array)
+
+    # middle = middle_weeks(day_array)
+    # middle_weeks = nil
+    # after_1st = "\n%s %s %s %s %s %s %s"
+
+    # while day_array.length >= 7
+    #   day_array.shift(7)
+    #   middle_weeks = after_1st % day_array
+    # end
+    # day_array
+    # print "getting here_________________________"
+
+    # mtd = first + middle
+
+    # print first_week
+
+
+    #if array.length is >= 7, pop off array's first 7 elements;
+    #if array.length < 7, var = 7 - array.length or .size, add_space; use push or <<
+    #array[0..6]
+    #could also arr.first(7) to return a new array of 7 values
+#     >> arr = [1,2,3,4,5]
+# >> (0..2).each { |i| puts arr[i] }
+# 1
+# 2
+# 3
+  end
+
+  def convert_zeller
+    self.zeller == 0 ? day_one = (self.zeller + 6) : day_one = (self.zeller - 1)
+    day_one
+  end
+
+  def first_week(day_one, add_space, day_array)
     day_one.times do
       day_array.unshift(add_space)
     end
-
     row_string = "%s %s %s %s %s %s %s"
-    row_string % day_array
+    first_week = row_string % day_array
+  end
 
+  def middle_weeks(day_array)
+    mid_weeks = nil
+    after_1st = "\n%s %s %s %s %s %s %s"
+    while day_array.length >= 7
+      day_array.shift(7)
+      mid_weeks = after_1st % day_array
+    end
+    mid_weeks
   end
 
 end
