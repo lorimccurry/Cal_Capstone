@@ -1,4 +1,3 @@
-
 class Month
 
   def initialize (month, year)
@@ -63,7 +62,7 @@ class Month
 
     formatted_array = month_array.map do |num|
       if num < 10
-        " " + num.to_s
+        " #{num}"
       else
         num.to_s
       end
@@ -92,17 +91,17 @@ class Month
     day_one.times do
       day_array.unshift(add_space)
     end
-    first_week_array = day_array.first(7)
+    first_week_array = day_array.shift(7)
     first_week_string = first_week_array.join(" ")
   end
 
   def middle_weeks(day_array)
-    mid_weeks = nil
+    mid_weeks = []
     while day_array.length >= 7
-      day_array.shift(7)
-      mid_weeks = day_array.first(7).join(' ').insert(0, "\n")
+      row = day_array.shift(7)
+      mid_weeks << row.join(' ')
     end
-    mid_weeks
+    mid_weeks.join("\n")
   end
 
 end
