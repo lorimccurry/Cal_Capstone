@@ -283,4 +283,91 @@ EOS
     assert_equal(expected.chomp, new_month.last_week(day_array, add_space))
   end
 
+  def test_34_test_month_printing_1_2012
+    new_month = Month.new(1, 2012)
+    expected = <<EOS
+ 1  2  3  4  5  6  7
+ 8  9 10 11 12 13 14
+15 16 17 18 19 20 21
+22 23 24 25 26 27 28
+29 30 31#{"            "}
+EOS
+    assert_equal(expected.chomp, new_month.weeks)
+  end
+
+  def test_35_test_month_printing_5_2012
+    new_month = Month.new(5, 2012)
+    expected = <<EOS
+       1  2  3  4  5
+ 6  7  8  9 10 11 12
+13 14 15 16 17 18 19
+20 21 22 23 24 25 26
+27 28 29 30 31#{"      "}
+EOS
+    assert_equal(expected.chomp, new_month.weeks)
+  end
+
+  def test_36_test_month_printing_2_2012
+    new_month = Month.new(2, 2012)
+    expected = <<EOS
+          1  2  3  4
+ 5  6  7  8  9 10 11
+12 13 14 15 16 17 18
+19 20 21 22 23 24 25
+26 27 28 29#{"         "}
+EOS
+    assert_equal(expected.chomp, new_month.weeks)
+  end
+
+  def test_37_test_month_printing_9_2012
+    new_month = Month.new(9, 2012)
+    expected = <<EOS
+                   1
+ 2  3  4  5  6  7  8
+ 9 10 11 12 13 14 15
+16 17 18 19 20 21 22
+23 24 25 26 27 28 29
+30#{"                  "}
+EOS
+    assert_equal(expected.chomp, new_month.weeks)
+  end
+
+  def test_38_test_month_printing_2_2015
+    new_month = Month.new(2, 2015)
+    expected = <<EOS
+ 1  2  3  4  5  6  7
+ 8  9 10 11 12 13 14
+15 16 17 18 19 20 21
+22 23 24 25 26 27 28
+EOS
+    assert_equal(expected.chomp, new_month.weeks)
+  end
+
+  def test_39_test_month_printing_2_1900
+    new_month = Month.new(2, 1900)
+    expected = <<EOS
+             1  2  3
+ 4  5  6  7  8  9 10
+11 12 13 14 15 16 17
+18 19 20 21 22 23 24
+25 26 27 28#{"         "}
+EOS
+    assert_equal(expected.chomp, new_month.weeks)
+  end
+
+  def test_40_test_month_printing_2_1900
+    new_month = Month.new(2, 2000)
+    expected = <<EOS
+       1  2  3  4  5
+ 6  7  8  9 10 11 12
+13 14 15 16 17 18 19
+20 21 22 23 24 25 26
+27 28 29#{"            "}
+EOS
+    assert_equal(expected.chomp, new_month.weeks)
+  end
+
+
+
+
 end

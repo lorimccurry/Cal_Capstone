@@ -79,9 +79,19 @@ class Month
 
     middle_weeks_string = middle_weeks(day_array)
 
-    # mtd = "#{first_week_string}\n#{middle_weeks_string}"
+    if day_array.length > 0
+      last_week_string = last_week(day_array, add_space)
+    else
+      last_week_string = nil
+    end
 
-    last_week(day_array, add_space)
+    if last_week_string == nil
+      mtd = "#{first_week_string}\n#{middle_weeks_string}"
+    else
+      mtd = "#{first_week_string}\n#{middle_weeks_string}\n#{last_week_string}"
+    end
+    mtd
+
   end
 
   def convert_zeller
