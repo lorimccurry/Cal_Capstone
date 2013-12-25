@@ -79,7 +79,9 @@ class Month
 
     middle_weeks_string = middle_weeks(day_array)
 
-    mtd = first_week_string + middle_weeks_string
+    # mtd = "#{first_week_string}\n#{middle_weeks_string}"
+
+    last_week(day_array, add_space)
   end
 
   def convert_zeller
@@ -101,7 +103,14 @@ class Month
       row = day_array.shift(7)
       mid_weeks << row.join(' ')
     end
-    mid_weeks.join("\n").insert(0, "\n")
+    mid_weeks.join("\n")
+  end
+
+  def last_week(day_array, add_space)
+    (7 - day_array.length).times do
+      day_array << add_space
+    end
+    last_week_string = day_array.join(" ")
   end
 
 end

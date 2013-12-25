@@ -173,48 +173,68 @@ EOS
     assert_equal(expected.chomp, new_month.first_week(day_one, add_space, day_array))
   end
 
-  def test_26_test_printing_first_and_middle_weeks_1_2012
+  def test_26_test_printing_middle_weeks_1_2012
     new_month = Month.new(1, 2012)
+    day_one = new_month.convert_zeller
+    add_space = "  "
+    day_array = new_month.month_array
+    new_month.first_week(day_one, add_space, day_array)
     expected = <<EOS
- 1  2  3  4  5  6  7
  8  9 10 11 12 13 14
 15 16 17 18 19 20 21
 22 23 24 25 26 27 28
 EOS
-    assert_equal(expected.chomp, new_month.weeks)
+    assert_equal(expected.chomp, new_month.middle_weeks(day_array))
   end
 
-  def test_27_test_printing_first_and_middle_weeks_5_2012
+  def test_27_test_printing_middle_weeks_5_2012
     new_month = Month.new(5, 2012)
+    day_one = new_month.convert_zeller
+    add_space = "  "
+    day_array = new_month.month_array
+    new_month.first_week(day_one, add_space, day_array)
     expected = <<EOS
-       1  2  3  4  5
  6  7  8  9 10 11 12
 13 14 15 16 17 18 19
 20 21 22 23 24 25 26
 EOS
-    assert_equal(expected.chomp, new_month.weeks)
+    assert_equal(expected.chomp, new_month.middle_weeks(day_array))
   end
 
-  def test_28_test_printing_first_and_middle_weeks_3_2012
+  def test_28_test_printing_middle_weeks_3_2012
     new_month = Month.new(3, 2012)
+    day_one = new_month.convert_zeller
+    add_space = "  "
+    day_array = new_month.month_array
+    new_month.first_week(day_one, add_space, day_array)
     expected = <<EOS
-             1  2  3
  4  5  6  7  8  9 10
 11 12 13 14 15 16 17
 18 19 20 21 22 23 24
 25 26 27 28 29 30 31
 EOS
-    assert_equal(expected.chomp, new_month.weeks)
+    assert_equal(expected.chomp, new_month.middle_weeks(day_array))
   end
 
   def test_29_test_printing_first_and_middle_weeks_9_2012
     new_month = Month.new(9, 2012)
+    day_one = new_month.convert_zeller
+    add_space = "  "
+    day_array = new_month.month_array
+    new_month.first_week(day_one, add_space, day_array)
     expected = <<EOS
-                   1
  2  3  4  5  6  7  8
  9 10 11 12 13 14 15
 16 17 18 19 20 21 22
 23 24 25 26 27 28 29
+EOS
+    assert_equal(expected.chomp, new_month.middle_weeks(day_array))
+  end
+
+  def test_30_test_printing_last_week_1_2012
+    new_month = Month.new(1, 2012)
+    expected = <<EOS
+29 30 31
 EOS
     assert_equal(expected.chomp, new_month.weeks)
   end
