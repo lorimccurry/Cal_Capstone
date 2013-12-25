@@ -233,11 +233,54 @@ EOS
 
   def test_30_test_printing_last_week_1_2012
     new_month = Month.new(1, 2012)
+    day_one = new_month.convert_zeller
+    add_space = "  "
+    day_array = new_month.month_array
+    new_month.first_week(day_one, add_space, day_array)
+    new_month.middle_weeks(day_array)
     expected = <<EOS
-29 30 31
+29 30 31#{"            "}
 EOS
-    assert_equal(expected.chomp, new_month.weeks)
+    assert_equal(expected.chomp, new_month.last_week(day_array, add_space))
   end
 
+  def test_31_test_printing_last_week_5_2012
+    new_month = Month.new(5, 2012)
+    day_one = new_month.convert_zeller
+    add_space = "  "
+    day_array = new_month.month_array
+    new_month.first_week(day_one, add_space, day_array)
+    new_month.middle_weeks(day_array)
+    expected = <<EOS
+27 28 29 30 31#{"      "}
+EOS
+    assert_equal(expected.chomp, new_month.last_week(day_array, add_space))
+  end
+
+  def test_32_test_printing_last_week_8_2012
+    new_month = Month.new(8, 2012)
+    day_one = new_month.convert_zeller
+    add_space = "  "
+    day_array = new_month.month_array
+    new_month.first_week(day_one, add_space, day_array)
+    new_month.middle_weeks(day_array)
+    expected = <<EOS
+26 27 28 29 30 31#{"   "}
+EOS
+    assert_equal(expected.chomp, new_month.last_week(day_array, add_space))
+  end
+
+  def test_33_test_printing_last_week_10_2012
+    new_month = Month.new(10, 2012)
+    day_one = new_month.convert_zeller
+    add_space = "  "
+    day_array = new_month.month_array
+    new_month.first_week(day_one, add_space, day_array)
+    new_month.middle_weeks(day_array)
+    expected = <<EOS
+28 29 30 31#{"         "}
+EOS
+    assert_equal(expected.chomp, new_month.last_week(day_array, add_space))
+  end
 
 end
