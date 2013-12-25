@@ -123,4 +123,10 @@ class Month
     last_week_string = day_array.join(" ")
   end
 
+  def month_all
+    month_header = head_rows
+    month_body = weeks
+    month = "#{month_header}\n#{month_body}"
+  end
+
 end
