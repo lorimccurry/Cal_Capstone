@@ -101,7 +101,7 @@ class Month
       row = day_array.shift(7)
       mid_weeks << row.join(' ')
     end
-    mid_weeks.join("\n")
+    mid_weeks.join("\n").insert(0, "\n")
   end
 
 end
