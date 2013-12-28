@@ -43,22 +43,22 @@ class TestMonth < MiniTest::Unit::TestCase
   #   assert_equal(0, new_month.zeller)
   # end
 
-  def test_09_test_head_rows_January_2012
+  def test_09_test_month_head_rows_January_2012
     new_month = Month.new(1, 2012)
     expected = <<EOS
     January 2012
 Su Mo Tu We Th Fr Sa
 EOS
-    assert_equal(expected.chomp, new_month.head_rows)
+    assert_equal(expected.chomp, new_month.head_rows(false))
   end
 
-  def test_10_test_head_rows_May_2012
+  def test_10_test_month_head_rows_May_2012
     new_month = Month.new(5, 2012)
     expected = <<EOS
       May 2012
 Su Mo Tu We Th Fr Sa
 EOS
-    assert_equal(expected.chomp, new_month.head_rows)
+    assert_equal(expected.chomp, new_month.head_rows(false))
   end
 
   def test_11_test_days_in_month_1_2012
@@ -378,10 +378,10 @@ Su Mo Tu We Th Fr Sa
 22 23 24 25 26 27 28
 29 30 31#{"            "}
 EOS
-    assert_equal(expected.chomp, new_month.month_all)
+    assert_equal(expected.chomp, new_month.month_all(false))
   end
 
-  def test_35_test_month_head_and_weeks_printing_5_2012
+  def test_42_test_month_head_and_weeks_printing_5_2012
     new_month = Month.new(5, 2012)
     expected = <<EOS
       May 2012
@@ -392,10 +392,10 @@ Su Mo Tu We Th Fr Sa
 20 21 22 23 24 25 26
 27 28 29 30 31#{"      "}
 EOS
-    assert_equal(expected.chomp, new_month.month_all)
+    assert_equal(expected.chomp, new_month.month_all(false))
   end
 
-  def test_36_test_month_head_and_weeks_printing_2_2012
+  def test_43_test_month_head_and_weeks_printing_2_2012
     new_month = Month.new(2, 2012)
     expected = <<EOS
    February 2012
@@ -406,10 +406,10 @@ Su Mo Tu We Th Fr Sa
 19 20 21 22 23 24 25
 26 27 28 29#{"         "}
 EOS
-    assert_equal(expected.chomp, new_month.month_all)
+    assert_equal(expected.chomp, new_month.month_all(false))
   end
 
-  def test_37_test_month_head_and_weeks_printing_9_2012
+  def test_44_test_month_head_and_weeks_printing_9_2012
     new_month = Month.new(9, 2012)
     expected = <<EOS
    September 2012
@@ -421,10 +421,10 @@ Su Mo Tu We Th Fr Sa
 23 24 25 26 27 28 29
 30#{"                  "}
 EOS
-    assert_equal(expected.chomp, new_month.month_all)
+    assert_equal(expected.chomp, new_month.month_all(false))
   end
 
-  def test_38_test_month_head_and_weeks_printing_2_2015
+  def test_45_test_month_head_and_weeks_printing_2_2015
     new_month = Month.new(2, 2015)
     expected = <<EOS
    February 2015
@@ -434,10 +434,10 @@ Su Mo Tu We Th Fr Sa
 15 16 17 18 19 20 21
 22 23 24 25 26 27 28
 EOS
-    assert_equal(expected.chomp, new_month.month_all)
+    assert_equal(expected.chomp, new_month.month_all(false))
   end
 
-  def test_39_test_month_head_and_weeks_printing_2_1900
+  def test_46_test_month_head_and_weeks_printing_2_1900
     new_month = Month.new(2, 1900)
     expected = <<EOS
    February 1900
@@ -448,10 +448,10 @@ Su Mo Tu We Th Fr Sa
 18 19 20 21 22 23 24
 25 26 27 28#{"         "}
 EOS
-    assert_equal(expected.chomp, new_month.month_all)
+    assert_equal(expected.chomp, new_month.month_all(false))
   end
 
-  def test_40_test_month_head_and_weeks_printing_2_2000
+  def test_47_test_month_head_and_weeks_printing_2_2000
     new_month = Month.new(2, 2000)
     expected = <<EOS
    February 2000
@@ -462,7 +462,123 @@ Su Mo Tu We Th Fr Sa
 20 21 22 23 24 25 26
 27 28 29#{"            "}
 EOS
-    assert_equal(expected.chomp, new_month.month_all)
+    assert_equal(expected.chomp, new_month.month_all(false))
+  end
+
+  def test_48_test_year_head_rows_January_2012
+    new_month = Month.new(1, 2012)
+    expected = <<EOS
+      January
+Su Mo Tu We Th Fr Sa
+EOS
+    assert_equal(expected.chomp, new_month.head_rows(true))
+  end
+
+  def test_49_test_year_head_rows_May_2012
+    new_month = Month.new(5, 2012)
+    expected = <<EOS
+        May
+Su Mo Tu We Th Fr Sa
+EOS
+    assert_equal(expected.chomp, new_month.head_rows(true))
+  end
+
+  def test_50_test_year_head_and_weeks_printing_1_2012
+    new_month = Month.new(1, 2012)
+    expected = <<EOS
+      January
+Su Mo Tu We Th Fr Sa
+ 1  2  3  4  5  6  7
+ 8  9 10 11 12 13 14
+15 16 17 18 19 20 21
+22 23 24 25 26 27 28
+29 30 31#{"            "}
+EOS
+    assert_equal(expected.chomp, new_month.month_all(true))
+  end
+
+  def test_51_test_year_head_and_weeks_printing_5_2012
+    new_month = Month.new(5, 2012)
+    expected = <<EOS
+        May
+Su Mo Tu We Th Fr Sa
+       1  2  3  4  5
+ 6  7  8  9 10 11 12
+13 14 15 16 17 18 19
+20 21 22 23 24 25 26
+27 28 29 30 31#{"      "}
+EOS
+    assert_equal(expected.chomp, new_month.month_all(true))
+  end
+
+  def test_52_test_year_head_and_weeks_printing_2_2012
+    new_month = Month.new(2, 2012)
+    expected = <<EOS
+      February
+Su Mo Tu We Th Fr Sa
+          1  2  3  4
+ 5  6  7  8  9 10 11
+12 13 14 15 16 17 18
+19 20 21 22 23 24 25
+26 27 28 29#{"         "}
+EOS
+    assert_equal(expected.chomp, new_month.month_all(true))
+  end
+
+  def test_53_test_year_head_and_weeks_printing_9_2012
+    new_month = Month.new(9, 2012)
+    expected = <<EOS
+     September
+Su Mo Tu We Th Fr Sa
+                   1
+ 2  3  4  5  6  7  8
+ 9 10 11 12 13 14 15
+16 17 18 19 20 21 22
+23 24 25 26 27 28 29
+30#{"                  "}
+EOS
+    assert_equal(expected.chomp, new_month.month_all(true))
+  end
+
+  def test_54_test_year_head_and_weeks_printing_2_2015
+    new_month = Month.new(2, 2015)
+    expected = <<EOS
+      February
+Su Mo Tu We Th Fr Sa
+ 1  2  3  4  5  6  7
+ 8  9 10 11 12 13 14
+15 16 17 18 19 20 21
+22 23 24 25 26 27 28
+EOS
+    assert_equal(expected.chomp, new_month.month_all(true))
+  end
+
+  def test_55_test_year_head_and_weeks_printing_2_1900
+    new_month = Month.new(2, 1900)
+    expected = <<EOS
+      February
+Su Mo Tu We Th Fr Sa
+             1  2  3
+ 4  5  6  7  8  9 10
+11 12 13 14 15 16 17
+18 19 20 21 22 23 24
+25 26 27 28#{"         "}
+EOS
+    assert_equal(expected.chomp, new_month.month_all(true))
+  end
+
+  def test_56_test_year_head_and_weeks_printing_2_2000
+    new_month = Month.new(2, 2000)
+    expected = <<EOS
+      February
+Su Mo Tu We Th Fr Sa
+       1  2  3  4  5
+ 6  7  8  9 10 11 12
+13 14 15 16 17 18 19
+20 21 22 23 24 25 26
+27 28 29#{"            "}
+EOS
+    assert_equal(expected.chomp, new_month.month_all(true))
   end
 
 

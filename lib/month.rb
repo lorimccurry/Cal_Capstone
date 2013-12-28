@@ -17,10 +17,14 @@ class Month
     day_one = (1 + ((month + 1)*26)/10 + year + (year/4) + 6*(year/100) + (year/400)) % 7
   end
 
-  def head_rows
+  def head_rows(year_print_boolean)
     month_names = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     name = month_names[@month - 1]
-    first_row = "#{name} #{@year}".center(20).rstrip
+    if year_print_boolean == true
+      first_row = "#{name}".center(20).rstrip
+    else
+      first_row = "#{name} #{@year}".center(20).rstrip
+    end
     second_row = "\nSu Mo Tu We Th Fr Sa"
     header = first_row + second_row
   end
@@ -123,8 +127,8 @@ class Month
     last_week_string = day_array.join(" ")
   end
 
-  def month_all
-    month_header = head_rows
+  def month_all(year_print_boolean)
+    month_header = head_rows(year_print_boolean)
     month_body = weeks
     month = "#{month_header}\n#{month_body}"
   end
