@@ -28,9 +28,9 @@ class Month
     name = month_names[@month - 1]
     header = []
     if year_print_boolean == true
-      header << first_row = ["#{name}"]
+      header << first_row = ["#{name}".center(20)]
     else
-      header << first_row = ["#{name} #{@year}"]
+      header << first_row = ["#{name} #{@year}".center(20)]
     end
     header << second_row = ["Su Mo Tu We Th Fr Sa"]
   end
