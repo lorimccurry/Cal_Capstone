@@ -1,4 +1,4 @@
-require 'month'
+require_relative 'month'
 
 class Year
 
@@ -7,32 +7,41 @@ class Year
   end
 
   def year_head
-    first_row = "#{@year}".center(60).rstrip
-    #why is this not 64 centered?
+    first_row = ["#{@year}"]
   end
 
-  def year_body
-    cal_month_array = month_array
+  def year_formatted_array
+    quarters_array = year_array_raw
+    # quarters_array.each do |quarter|
+      # quarter.each do |month|
+        # month.each do |row|
+        #   row.each do |atom|
+        #     print atom
+        #   end
+        # end
+      # end
+    # end
+    # print quarters_array[0]
+  end
+
+  def year_array_raw
+    month_nums_array = (1..12).to_a
+    cal_month_array = []
+    formatted_year = month_nums_array.each do |month_num|
+      new_month = Month.new(month_num, @year)
+      month_array = new_month.week_arrays(true)
+      cal_month_array.push(month_array)
+    end
+    quarters = quarter_array(cal_month_array)
+  end
+
+  def quarter_array(cal_month_array)
     month_row = []
     while cal_month_array.length >= 3
-      row = cal_month_array.shift(3)
-      row_string ="#{row[0]} #{row[1]} #{row[2]}"
-      # month_row << row_string.join(" ")
+      quarter = cal_month_array.shift(3)
+      month_row << quarter
     end
-    # month_row.join("\n")
+    month_row
   end
-
-  def month_array
-    month_array = (1..12).to_a
-    cal_month_array = []
-    formatted_year = month_array.each do |month_num|
-      new_month = Month.new(month_num, @year)
-      formatted_month = new_month.month_all(true)
-      cal_month_array.push(formatted_month)
-    end
-    cal_month_array
-  end
-
-
 
 end
