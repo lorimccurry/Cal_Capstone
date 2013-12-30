@@ -12,16 +12,18 @@ class Year
 
   def year_formatted_array
     quarters_array = year_array_raw
-    # quarters_array.each do |quarter|
-      # quarter.each do |month|
-        # month.each do |row|
-        #   row.each do |atom|
-        #     print atom
-        #   end
-        # end
-      # end
-    # end
-    # print quarters_array[0]
+    rows = []
+    0.upto(3) do |quarter_index|
+      0.upto(6) do |row_index|
+        row = []
+        0.upto(2) do |month_index|
+          row << quarters_array[quarter_index][month_index][row_index].join(" ")
+        end
+        # rows << row.join(" ")
+        row
+        print row
+      end
+    end
   end
 
   def year_array_raw
