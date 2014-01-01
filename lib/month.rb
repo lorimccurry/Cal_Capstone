@@ -95,6 +95,8 @@ class Month
 
     weeks = []
     day_array.each_slice(7) do |row|
+      # row << "\n"
+      # print row
       weeks << row
     end
 
