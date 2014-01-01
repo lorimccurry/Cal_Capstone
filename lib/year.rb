@@ -19,7 +19,7 @@ class Year
       # 0.upto(7) do |row_index|
         row = []
         0.upto(2) do |month_index|
-          row << quarters_array[quarter_index][month_index][row_index].join(" ")
+          row << quarters_array[quarter_index][month_index][row_index]
         end
         rows << row.join("  ")
       end
