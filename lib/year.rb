@@ -7,7 +7,7 @@ class Year
   end
 
   def year_head
-    first_row = ["#{@year}"]
+    first_row = "#{@year}".center(64)
   end
 #if a month has rows length of 7, then (7-row.length).times do month rows << ["blank row"]
 
@@ -24,7 +24,7 @@ class Year
         rows << row.join("  ")
       end
     end
-    rows
+    rows.unshift(self.year_head)
 
     #32 rows, each row is a row to print out w/ values from 3 mos
     # rows.each do |row|

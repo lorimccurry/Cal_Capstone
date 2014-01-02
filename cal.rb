@@ -34,10 +34,8 @@ if month
   puts month_array.join("\n")
 else
   new_year = Year.new(year)
-  header = [new_year.year_head.first.center(64)]
   year_array = new_year.year_formatted_array
-  year_output = header + year_array
-  puts year_output.join("\n")
+  puts year_array.join("\n")
 end
 
 # puts `cal #{month} #{year}`
