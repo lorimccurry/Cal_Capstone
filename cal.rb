@@ -16,7 +16,7 @@ elsif ARGV.length == 1
   month = nil
 end
 
-if month 
+if month
   if (month < 1 or month > 12 && year < 1800 or year > 3000)
     raise ArgumentError, 'Not a valid month (1..12) and year range (1800..3000)'
   elsif month < 1 or month > 12
@@ -30,14 +30,14 @@ end
 
 if month
   new_month = Month.new(month, year)
-  month_array = new_month.week_arrays(false)
-  print month_array.join("\n")
+  month_array = new_month.week_strings(false)
+  puts month_array.join("\n")
 else
   new_year = Year.new(year)
   header = [new_year.year_head.first.center(64)]
   year_array = new_year.year_formatted_array
   year_output = header + year_array
-  print year_output.join("\n")
+  puts year_output.join("\n")
 end
 
 # puts `cal #{month} #{year}`

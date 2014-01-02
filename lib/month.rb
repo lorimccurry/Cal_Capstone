@@ -22,7 +22,6 @@ class Month
     day_one
   end
 
-
   def head_rows(year_print_boolean)
     month_names = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     name = month_names[@month - 1]
@@ -38,8 +37,8 @@ class Month
   def month_days
     leap_year
 
-    thirty_one = [1, 3, 5, 7, 8, 10, 12]
-    thirty = [4, 6, 9, 11]
+    thirty_one_month = [1, 3, 5, 7, 8, 10, 12]
+    thirty_month = [4, 6, 9, 11]
 
     if @month == 2
       if leap_year == true
@@ -48,9 +47,9 @@ class Month
         num_days = 28
       end
     else
-      if thirty_one.include? @month
+      if thirty_one_month.include? @month
         num_days = 31
-      elsif thirty.include? @month
+      elsif thirty_month.include? @month
         num_days = 30
       end
     end
@@ -70,7 +69,6 @@ class Month
     end
   end
 
-
   def month_array
     num_days = self.month_days
     month_array = (1..num_days).to_a
@@ -84,11 +82,13 @@ class Month
     end
   end
 
-  def week_arrays(year_print_boolean)
+  def week_strings(year_print_boolean)
     day_one = convert_zeller
     add_space = "  "
     day_array = self.month_array
 
+    #adds 2 spaces/day to start of day array to line up day one
+    #under proper day of the week
     day_one.times do
       day_array.unshift(add_space)
     end
@@ -98,6 +98,7 @@ class Month
       weeks << row
     end
 
+    #adds 2 spaces/day to end of week to allow last week = 20 spaces
     weeks.each do |week|
       if week.length < 7
         (7 - week.length).times do
@@ -106,10 +107,12 @@ class Month
       end
     end
 
-    head_rows(year_print_boolean).reverse_each do |item|
-      weeks.unshift(item)
+    #adds month and week headers to week array; reversed order so would
+    #attach to week array with month header first
+    head_rows(year_print_boolean).reverse_each do |header_item|
+      weeks.unshift(header_item)
     end
-    weeks.map {|w| w.join(" ") }
+    weeks.map {|week| week.join(" ") }
   end
 
   # def head_rows(year_print_boolean)
