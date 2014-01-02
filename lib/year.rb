@@ -24,7 +24,7 @@ class Year
         rows << row.join("  ")
       end
     end
-    rows << self.year_head.unshift
+    rows
 
     #32 rows, each row is a row to print out w/ values from 3 mos
     # rows.each do |row|
