@@ -27,19 +27,20 @@ class TestYear < MiniTest::Unit::TestCase
 
   def test_01_year_number_header
     new_year = Year.new(2012)
-    assert_equal(["                            2012                               "],
+    assert_equal("                            2012                                ",
       new_year.year_head)
   end
 
   def test_02_year_number_header
     new_year = Year.new(1800)
-    assert_equal(["                            1800                               "], new_year.year_head)
+    assert_equal("                            1800                                ",
+      new_year.year_head)
   end
 
   def test_03_year_formatted_for_printing
     new_year = Year.new(2012)
     expected =
-["                            2012                               ",
+["                            2012                                ",
 "      January               February               March        ",
 "Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa",
 " 1  2  3  4  5  6  7            1  2  3  4               1  2  3",
