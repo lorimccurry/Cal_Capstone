@@ -37,8 +37,8 @@ class Month
   def month_days
     leap_year
 
-    thirty_one_month = [1, 3, 5, 7, 8, 10, 12]
-    thirty_month = [4, 6, 9, 11]
+    thirty_one_day_month = [1, 3, 5, 7, 8, 10, 12]
+    thirty_day_month = [4, 6, 9, 11]
 
     if @month == 2
       if leap_year == true
@@ -47,9 +47,9 @@ class Month
         num_days = 28
       end
     else
-      if thirty_one_month.include? @month
+      if thirty_one_day_month.include? @month
         num_days = 31
-      elsif thirty_month.include? @month
+      elsif thirty_day_month.include? @month
         num_days = 30
       end
     end
