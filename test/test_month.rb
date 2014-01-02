@@ -603,37 +603,37 @@ class TestMonth < MiniTest::Unit::TestCase
 
   def test_61_weeks_arrays_9_2012
     new_month = Month.new(9, 2012)
-    assert_equal([["     September      "], ["Su Mo Tu We Th Fr Sa"], ["  ", "  ", "  ", "  ", "  ", "  ", " 1"], [" 2", " 3", " 4", " 5", " 6", " 7", " 8"], [" 9", "10", "11", "12", "13", "14", "15"], ["16", "17", "18", "19", "20", "21", "22"], ["23", "24", "25", "26", "27", "28", "29"], ["30", "  ", "  ", "  ", "  ", "  ", "  "]],
+    assert_equal(["     September      ", "Su Mo Tu We Th Fr Sa", "                   1", " 2  3  4  5  6  7  8", " 9 10 11 12 13 14 15", "16 17 18 19 20 21 22", "23 24 25 26 27 28 29", "30                  "],
       new_month.week_arrays(true))
   end
 
   def test_62_weeks_arrays_1_2012
     new_month = Month.new(1, 2012)
-    assert_equal([["      January       "], ["Su Mo Tu We Th Fr Sa"], [" 1", " 2", " 3", " 4", " 5", " 6", " 7"], [" 8", " 9", "10", "11", "12", "13", "14"], ["15", "16", "17", "18", "19", "20", "21"], ["22", "23", "24", "25", "26", "27", "28"], ["29", "30", "31", "  ", "  ", "  ", "  "]],
+    assert_equal(["      January       ", "Su Mo Tu We Th Fr Sa", " 1  2  3  4  5  6  7", " 8  9 10 11 12 13 14", "15 16 17 18 19 20 21", "22 23 24 25 26 27 28", "29 30 31            "],
       new_month.week_arrays(true))
   end
 
   def test_63_weeks_arrays_5_2012
     new_month = Month.new(5, 2012)
-    assert_equal([["        May         "], ["Su Mo Tu We Th Fr Sa"], ["  ", "  ", " 1", " 2", " 3", " 4", " 5"], [" 6", " 7", " 8", " 9", "10", "11", "12"], ["13", "14", "15", "16", "17", "18", "19"], ["20", "21", "22", "23", "24", "25", "26"], ["27", "28", "29", "30", "31", "  ", "  "]],
+    assert_equal(["        May         ", "Su Mo Tu We Th Fr Sa", "       1  2  3  4  5", " 6  7  8  9 10 11 12", "13 14 15 16 17 18 19", "20 21 22 23 24 25 26", "27 28 29 30 31      "],
       new_month.week_arrays(true))
   end
 
   def test_64_weeks_arrays_2_2000
     new_month = Month.new(2, 2000)
-    assert_equal([["   February 2000    "], ["Su Mo Tu We Th Fr Sa"], ["  ", "  ", " 1", " 2", " 3", " 4", " 5"], [" 6", " 7", " 8", " 9", "10", "11", "12"], ["13", "14", "15", "16", "17", "18", "19"], ["20", "21", "22", "23", "24", "25", "26"], ["27", "28", "29", "  ", "  ", "  ", "  "]],
+    assert_equal(["   February 2000    ", "Su Mo Tu We Th Fr Sa", "       1  2  3  4  5", " 6  7  8  9 10 11 12", "13 14 15 16 17 18 19", "20 21 22 23 24 25 26", "27 28 29            "],
       new_month.week_arrays(false))
   end
 
   def test_65_weeks_arrays_2_1900
     new_month = Month.new(2, 1900)
-    assert_equal([["   February 1900    "], ["Su Mo Tu We Th Fr Sa"], ["  ", "  ", "  ", "  ", " 1", " 2", " 3"], [" 4", " 5", " 6", " 7", " 8", " 9", "10"], ["11", "12", "13", "14", "15", "16", "17"], ["18", "19", "20", "21", "22", "23", "24"], ["25", "26", "27", "28", "  ", "  ", "  "]],
+    assert_equal(["   February 1900    ", "Su Mo Tu We Th Fr Sa", "             1  2  3", " 4  5  6  7  8  9 10", "11 12 13 14 15 16 17", "18 19 20 21 22 23 24", "25 26 27 28         "],
       new_month.week_arrays(false))
   end
 
   def test_66_weeks_arrays_2_2015
     new_month = Month.new(2, 2015)
-    assert_equal([["      February      "], ["Su Mo Tu We Th Fr Sa"], [" 1", " 2", " 3", " 4", " 5", " 6", " 7"], [" 8", " 9", "10", "11", "12", "13", "14"], ["15", "16", "17", "18", "19", "20", "21"], ["22", "23", "24", "25", "26", "27", "28"]],
+    assert_equal(["      February      ", "Su Mo Tu We Th Fr Sa", " 1  2  3  4  5  6  7", " 8  9 10 11 12 13 14", "15 16 17 18 19 20 21", "22 23 24 25 26 27 28"],
       new_month.week_arrays(true))
   end
 
