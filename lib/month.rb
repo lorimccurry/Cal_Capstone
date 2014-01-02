@@ -111,7 +111,7 @@ class Month
     head_rows(year_print_boolean).reverse_each do |item|
       weeks.unshift(item)
     end
-    weeks
+    weeks.map {|w| w.join(" ") }
   end
 
   # def head_rows(year_print_boolean)
