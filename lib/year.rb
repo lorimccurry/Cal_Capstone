@@ -7,7 +7,7 @@ class Year
   end
 
   def year_head
-    first_row = "#{@year}".center(64)
+    first_row = "#{@year}".center(60).rstrip
   end
 
   def year_formatted_array

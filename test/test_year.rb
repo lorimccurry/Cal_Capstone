@@ -27,14 +27,12 @@ class TestYear < MiniTest::Unit::TestCase
 
   def test_01_year_number_header
     new_year = Year.new(2012)
-    assert_equal("                            2012                                ",
-      new_year.year_head)
+    assert_equal("                            2012", new_year.year_head)
   end
 
   def test_02_year_number_header
     new_year = Year.new(1800)
-    assert_equal("                            1800                                ",
-      new_year.year_head)
+    assert_equal("                            1800", new_year.year_head)
   end
 
   def test_03_year_formatted_for_printing
