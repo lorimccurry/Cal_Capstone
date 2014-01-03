@@ -2,8 +2,6 @@ require_relative 'lib/year'
 require_relative 'lib/month'
 
 
-#need code to say if there's only 1 arg (argv0 is nil, that it's a year; w/ 2, see below; with
-
 if ARGV.length > 2
   raise ArgumentError, 'Too many arguments'
 elsif ARGV.empty?
@@ -13,18 +11,17 @@ elsif ARGV.length == 2
   year = ARGV[1].to_i
 elsif ARGV.length == 1
   year = ARGV[0].to_i
-  month = nil
 end
 
 if month
-  if (month < 1 or month > 12 && year < 1800 or year > 3000)
+  if (month < 1 || month > 12) && (year < 1800 || year > 3000)
     raise ArgumentError, 'Not a valid month (1..12) and year range (1800..3000)'
-  elsif month < 1 or month > 12
+  elsif month < 1 || month > 12
     raise ArgumentError, 'Not a valid month number (1..12)'
   end
 end
 
-if year < 1800 or year > 3000
+if year < 1800 || year > 3000
   raise ArgumentError, 'Year out of range (1800..3000)'
 end
 
@@ -37,5 +34,3 @@ else
   year_array = new_year.year_formatted_array
   puts year_array.join("\n")
 end
-
-# puts `cal #{month} #{year}`
