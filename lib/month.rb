@@ -127,6 +127,8 @@ class Month
     blank_row = ["                    "]
     if year_print_boolean == true && weeks.length == 7
       weeks << blank_row
+    elsif year_print_boolean == false
+      weeks << blank_row
     end
     weeks.map {|week| week.join(" ") }
   end

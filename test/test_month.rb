@@ -112,44 +112,113 @@ class TestMonth < MiniTest::Unit::TestCase
 
   def test_21_weeks_strings_9_2012
     new_month = Month.new(9, 2012)
-    assert_equal(["     September", "Su Mo Tu We Th Fr Sa", "                   1", " 2  3  4  5  6  7  8", " 9 10 11 12 13 14 15", "16 17 18 19 20 21 22", "23 24 25 26 27 28 29", "30"],
+    assert_equal(
+    ["     September",
+"Su Mo Tu We Th Fr Sa",
+"                   1",
+" 2  3  4  5  6  7  8",
+" 9 10 11 12 13 14 15",
+"16 17 18 19 20 21 22",
+"23 24 25 26 27 28 29",
+"30"],
       new_month.week_strings(true))
   end
 
   def test_22_weeks_strings_1_2012
     new_month = Month.new(1, 2012)
-    assert_equal(["      January       ", "Su Mo Tu We Th Fr Sa", " 1  2  3  4  5  6  7", " 8  9 10 11 12 13 14", "15 16 17 18 19 20 21", "22 23 24 25 26 27 28", "29 30 31            ","                    "],
+    assert_equal(
+["      January       ",
+"Su Mo Tu We Th Fr Sa",
+" 1  2  3  4  5  6  7",
+" 8  9 10 11 12 13 14",
+"15 16 17 18 19 20 21",
+"22 23 24 25 26 27 28",
+"29 30 31            ",
+"                    "],
       new_month.week_strings(true))
   end
 
   def test_23_weeks_strings_5_2012
     new_month = Month.new(5, 2012)
-    assert_equal(["        May         ", "Su Mo Tu We Th Fr Sa", "       1  2  3  4  5", " 6  7  8  9 10 11 12", "13 14 15 16 17 18 19", "20 21 22 23 24 25 26", "27 28 29 30 31      ","                    "],
+    assert_equal(
+["        May         ",
+"Su Mo Tu We Th Fr Sa",
+"       1  2  3  4  5",
+" 6  7  8  9 10 11 12",
+"13 14 15 16 17 18 19",
+"20 21 22 23 24 25 26",
+"27 28 29 30 31      ",
+"                    "],
       new_month.week_strings(true))
   end
 
   def test_24_weeks_strings_2_2000
     new_month = Month.new(2, 2000)
-    assert_equal(["   February 2000", "Su Mo Tu We Th Fr Sa", "       1  2  3  4  5", " 6  7  8  9 10 11 12", "13 14 15 16 17 18 19", "20 21 22 23 24 25 26", "27 28 29            "],
+    assert_equal(
+["   February 2000",
+"Su Mo Tu We Th Fr Sa",
+"       1  2  3  4  5",
+" 6  7  8  9 10 11 12",
+"13 14 15 16 17 18 19",
+"20 21 22 23 24 25 26",
+"27 28 29            ",
+"                    "],
       new_month.week_strings(false))
   end
 
   def test_25_weeks_strings_2_1900
     new_month = Month.new(2, 1900)
-    assert_equal(["   February 1900", "Su Mo Tu We Th Fr Sa", "             1  2  3", " 4  5  6  7  8  9 10", "11 12 13 14 15 16 17", "18 19 20 21 22 23 24", "25 26 27 28         "],
+    assert_equal(
+["   February 1900",
+"Su Mo Tu We Th Fr Sa",
+"             1  2  3",
+" 4  5  6  7  8  9 10",
+"11 12 13 14 15 16 17",
+"18 19 20 21 22 23 24",
+"25 26 27 28         ",
+"                    "],
       new_month.week_strings(false))
   end
 
   def test_26_weeks_strings_2_2015
     new_month = Month.new(2, 2015)
-    assert_equal(["      February      ", "Su Mo Tu We Th Fr Sa", " 1  2  3  4  5  6  7", " 8  9 10 11 12 13 14", "15 16 17 18 19 20 21", "22 23 24 25 26 27 28"],
+    assert_equal(
+["      February      ",
+"Su Mo Tu We Th Fr Sa",
+" 1  2  3  4  5  6  7",
+" 8  9 10 11 12 13 14",
+"15 16 17 18 19 20 21",
+"22 23 24 25 26 27 28"],
       new_month.week_strings(true))
   end
 
   def test_27_weeks_strings_12_2012
     new_month = Month.new(12, 2012)
-    assert_equal(["      December", "Su Mo Tu We Th Fr Sa", "                   1", " 2  3  4  5  6  7  8", " 9 10 11 12 13 14 15", "16 17 18 19 20 21 22", "23 24 25 26 27 28 29", "30 31"],
+    assert_equal(
+["      December",
+"Su Mo Tu We Th Fr Sa",
+"                   1",
+" 2  3  4  5  6  7  8",
+" 9 10 11 12 13 14 15",
+"16 17 18 19 20 21 22",
+"23 24 25 26 27 28 29",
+"30 31"],
       new_month.week_strings(true))
+  end
+
+  def test_28_weeks_strings_9_2012
+    new_month = Month.new(9, 2012)
+    assert_equal(
+["   September 2012",
+"Su Mo Tu We Th Fr Sa",
+"                   1",
+" 2  3  4  5  6  7  8",
+" 9 10 11 12 13 14 15",
+"16 17 18 19 20 21 22",
+"23 24 25 26 27 28 29",
+"30                  ",
+"                    "],
+      new_month.week_strings(false))
   end
 
 end
