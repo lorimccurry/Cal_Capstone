@@ -25,11 +25,17 @@ class Month
   def head_rows(year_print_boolean)
     month_names = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     name = month_names[@month - 1]
+    end_of_quarter = ["March", "June", "September", "December"]
+
     header = []
     if year_print_boolean == true
-      header << first_row = ["#{name}".center(20)]
+      if end_of_quarter.include? name
+        header << first_row = ["#{name}".center(20).rstrip]
+      else
+        header << first_row = ["#{name}".center(20)]
+      end
     else
-      header << first_row = ["#{name} #{@year}".center(20)]
+      header << first_row = ["#{name} #{@year}".center(20).rstrip]
     end
     header << second_row = ["Su Mo Tu We Th Fr Sa"]
   end
@@ -99,8 +105,13 @@ class Month
     end
 
     #adds 2 spaces/day to end of week to allow last week = 20 spaces
+    end_of_quarter = [3, 6, 9, 12]
     weeks.each do |week|
-      if week.length < 7
+      if week.length < 7 && year_print_boolean == false
+        (7 - week.length).times do
+          week << add_space
+        end
+      elsif week.length < 7 && year_print_boolean == true && !end_of_quarter.include?(@month)
         (7 - week.length).times do
           week << add_space
         end
@@ -112,7 +123,16 @@ class Month
     head_rows(year_print_boolean).reverse_each do |header_item|
       weeks.unshift(header_item)
     end
+
+    # if year_print_boolean == true && weeks.length == 8 && end_of_quarter.include?(weeks.first)
+
+    blank_row = ["                    "]
+    if year_print_boolean == true && weeks.length == 7
+      weeks << blank_row
+    end
+
     weeks.map {|week| week.join(" ") }
+    # weeks.map! {|week| week.join(" ") }
   end
 
   # def head_rows(year_print_boolean)
