@@ -124,83 +124,11 @@ class Month
       weeks.unshift(header_item)
     end
 
-    # if year_print_boolean == true && weeks.length == 8 && end_of_quarter.include?(weeks.first)
-
     blank_row = ["                    "]
     if year_print_boolean == true && weeks.length == 7
       weeks << blank_row
     end
-
     weeks.map {|week| week.join(" ") }
-    # weeks.map! {|week| week.join(" ") }
   end
-
-  # def head_rows(year_print_boolean)
-    # month_names = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-    # name = month_names[@month - 1]
-    # if year_print_boolean == true
-    #   first_row = "#{name}".center(20).rstrip
-    # else
-    #   first_row = "#{name} #{@year}".center(20).rstrip
-    # end
-    # second_row = "\nSu Mo Tu We Th Fr Sa"
-    # header = first_row + second_row
-  # end
-
-
-  # def weeks
-    # day_one = convert_zeller
-
-    # add_space = "  "
-    # day_array = self.month_array
-
-    # first_week_string = first_week(day_one, add_space, day_array)
-
-    # middle_weeks_string = middle_weeks(day_array)
-
-    # if day_array.length > 0
-    #   last_week_string = last_week(day_array, add_space)
-    # else
-    #   last_week_string = nil
-    # end
-
-    # if last_week_string == nil
-    #   mtd = "#{first_week_string}\n#{middle_weeks_string}"
-    # else
-    #   mtd = "#{first_week_string}\n#{middle_weeks_string}\n#{last_week_string}"
-    # end
-    # mtd
-
-  # end
-
-  # def first_week(day_one, add_space, day_array)
-    # day_one.times do
-    #   day_array.unshift(add_space)
-    # end
-    # first_week_array = day_array.shift(7)
-    # first_week_string = first_week_array.join(" ")
-  # end
-
-  # def middle_weeks(day_array)
-    # mid_weeks = []
-    # while day_array.length >= 7
-    #   row = day_array.shift(7)
-    #   mid_weeks << row.join(' ')
-    # end
-    # mid_weeks.join("\n")
-  # end
-
-  # def last_week(day_array, add_space)
-    # (7 - day_array.length).times do
-    #   day_array << add_space
-    # end
-    # last_week_string = day_array.join(" ")
-  # end
-
-  # def month_all(year_print_boolean)
-    # month_header = head_rows(year_print_boolean)
-    # month_body = weeks
-    # month = "#{month_header}\n#{month_body}"
-  # end
 
 end

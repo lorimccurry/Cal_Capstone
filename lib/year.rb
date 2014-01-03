@@ -24,7 +24,7 @@ class Year
           row << quarters_array[quarter_index][month_index][row_index]
         end
         joined_row = row.join("  ")
-        rows << row.join("  ") unless joined_row.strip == ""
+        joined_row.strip == "" ? rows << joined_row.rstrip : rows << row.join("  ")
       end
     end
     rows.unshift(self.year_head)
