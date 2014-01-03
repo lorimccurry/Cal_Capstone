@@ -127,4 +127,68 @@ Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
 EOS
     assert_equal expected_output, shell_output
   end
+
+  def test_08_year_output_out_of_scope_1_3001
+    shell_output = `ruby cal.rb 1 3001`
+    assert_raises ArgumentError do
+      raise ArgumentError, 'Year out of range (1800..3000)'
+    end
+  end
+
+  def test_09_year_output_out_of_scope_12_1799
+    shell_output = `ruby cal.rb 12 1799`
+    assert_raises ArgumentError do
+      raise ArgumentError, 'Year out of range (1800..3000)'
+    end
+  end
+
+  def test_10_month_output_out_of_scope_13_2012
+    shell_output = `ruby cal.rb 13 2012`
+    assert_raises ArgumentError do
+      raise ArgumentError, 'Not a valid month number (1..12)'
+    end
+  end
+
+  def test_11_month_output_out_of_scope_neg_1_2012
+    shell_output = `ruby cal.rb -1 2012`
+    assert_raises ArgumentError do
+      raise ArgumentError, 'Not a valid month number (1..12)'
+    end
+  end
+
+  def test_12_year_and_month_output_out_of_scope_14_3005
+    shell_output = `ruby cal.rb 14 3005`
+    assert_raises ArgumentError do
+      raise ArgumentError, 'Not a valid month (1..12) and year range (1800..3000)'
+    end
+  end
+
+  def test_13_more_than_2_arguments
+    shell_output = `ruby cal.rb 1 2012 6`
+    assert_raises ArgumentError do
+      raise ArgumentError, 'Too many arguments'
+    end
+  end
+
+  def test_14_no_arguments
+    shell_output = `ruby cal.rb`
+    assert_raises ArgumentError do
+      raise ArgumentError, 'No arguments given'
+    end
+  end
+
+  def test_15_non_integer_arguments
+    shell_output = `ruby cal.rb * cat`
+    assert_raises ArgumentError do
+      raise ArgumentError, 'Not a valid month number (1..12)'
+    end
+  end
+
+  def test_16_non_integer_argument
+    shell_output = `ruby cal.rb *`
+    assert_raises ArgumentError do
+      raise ArgumentError, 'Year out of range (1800..3000)'
+    end
+  end
+
 end
