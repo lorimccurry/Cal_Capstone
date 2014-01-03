@@ -12,15 +12,19 @@ class Year
 
   def year_formatted_array
     quarters_array = year_array_raw
+
+    index_quarters_in_year = 3
+    index_rows_in_month = 7
+    index_months_in_quarter = 2
     rows = []
-    0.upto(3) do |quarter_index|
-      # 0.upto(6) do |row_index|
-      0.upto(7) do |row_index|
+    0.upto(index_quarters_in_year) do |quarter_index|
+      0.upto(index_rows_in_month) do |row_index|
         row = []
-        0.upto(2) do |month_index|
+        0.upto(index_months_in_quarter) do |month_index|
           row << quarters_array[quarter_index][month_index][row_index]
         end
-        rows << row.join("  ")
+        joined_row = row.join("  ")
+        rows << row.join("  ") unless joined_row.strip == ""
       end
     end
     rows.unshift(self.year_head)
@@ -42,24 +46,6 @@ class Year
     while cal_month_array.length >= 3
       quarter = cal_month_array.shift(3)
       month_row << quarter
-    end
-    month_row
-
-    #if within the quarter there's a month that has 8 rows, add a blank row
-    #to the end of the other two months in the quarter
-    #(make all months) have an equal number of rows
-    0.upto(3) do |quarter_index|
-      0.upto(2) do |month_index|
-        if month_row[quarter_index][month_index].length == 8
-          long_qtrs = month_row[quarter_index]
-          long_qtrs.each do |mth|
-            blank_row = "                    "
-            if mth.length == 7
-              mth << blank_row
-            end
-          end
-        end
-      end
     end
     month_row
   end
