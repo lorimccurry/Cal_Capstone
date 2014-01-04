@@ -13,5 +13,5 @@ desc "Run tests"
 task :default => :test
 
 task :test do
-  ruby 'test/guided_tests.rb'
+ # ruby 'test/guided_tests.rb'
 end
