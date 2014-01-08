@@ -120,7 +120,7 @@ class TestMonth < MiniTest::Unit::TestCase
 " 9 10 11 12 13 14 15",
 "16 17 18 19 20 21 22",
 "23 24 25 26 27 28 29",
-"30"],
+"30                  "],
       new_month.week_strings(true))
   end
 
@@ -188,7 +188,9 @@ class TestMonth < MiniTest::Unit::TestCase
 " 1  2  3  4  5  6  7",
 " 8  9 10 11 12 13 14",
 "15 16 17 18 19 20 21",
-"22 23 24 25 26 27 28"],
+"22 23 24 25 26 27 28",
+"                    ",
+"                    "],
       new_month.week_strings(true))
   end
 
@@ -202,7 +204,7 @@ class TestMonth < MiniTest::Unit::TestCase
 " 9 10 11 12 13 14 15",
 "16 17 18 19 20 21 22",
 "23 24 25 26 27 28 29",
-"30 31"],
+"30 31               "],
       new_month.week_strings(true))
   end
 
@@ -219,6 +221,20 @@ class TestMonth < MiniTest::Unit::TestCase
 "30                  ",
 "                    "],
       new_month.week_strings(false))
+  end
+
+  def test_29_weeks_strings_12_2015
+    new_month = Month.new(12, 2015)
+    assert_equal(
+["      December",
+"Su Mo Tu We Th Fr Sa",
+"       1  2  3  4  5",
+" 6  7  8  9 10 11 12",
+"13 14 15 16 17 18 19",
+"20 21 22 23 24 25 26",
+"27 28 29 30 31      ",
+"                    "],
+      new_month.week_strings(true))
   end
 
 end
