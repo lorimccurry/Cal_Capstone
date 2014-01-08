@@ -105,15 +105,10 @@ class Month
     end
 
     #adds 2 spaces/day to end of week to allow last week = 20 spaces
-    end_of_quarter = [3, 6, 9, 12]
     weeks.each do |week|
-      if week.length < 7 && year_print_boolean == false
+      if week.length < 7
         (7 - week.length).times do
-          week << add_space
-        end
-      elsif week.length < 7 && year_print_boolean == true && !end_of_quarter.include?(@month)
-        (7 - week.length).times do
-          week << add_space
+        week << add_space
         end
       end
     end
@@ -125,8 +120,10 @@ class Month
     end
 
     blank_row = ["                    "]
-    if year_print_boolean == true && weeks.length == 7
-      weeks << blank_row
+    if year_print_boolean == true && weeks.length <= 7
+      until weeks.length == 8
+        weeks << blank_row
+      end
     elsif year_print_boolean == false
       weeks << blank_row
     end
