@@ -16,6 +16,7 @@ class Year
     index_quarters_in_year = 3
     index_rows_in_month = 7
     index_months_in_quarter = 2
+
     rows = []
     0.upto(index_quarters_in_year) do |quarter_index|
       0.upto(index_rows_in_month) do |row_index|
@@ -36,14 +37,14 @@ class Year
     formatted_year = month_nums_array.each do |month_num|
       new_month = Month.new(month_num, @year)
       month_array = new_month.month_constructor(true)
-      cal_month_array.push(month_array)
+      cal_month_array << month_array
     end
-    quarters = quarter_array(cal_month_array)
+    quarter_subdivisions = quarter_array(cal_month_array)
   end
 
   def quarter_array(cal_month_array)
     month_row = []
-    while cal_month_array.length >= 3
+    until cal_month_array.length < 3
       quarter = cal_month_array.shift(3)
       month_row << quarter
     end
