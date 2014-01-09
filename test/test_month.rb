@@ -35,57 +35,57 @@ class TestMonth < MiniTest::Unit::TestCase
 
   def test_07_test_days_in_month_1_2012
     new_month = Month.new(1, 2012)
-    assert_equal(31, new_month.month_days)
+    assert_equal(31, new_month.num_month_days)
   end
 
   def test_08_test_days_in_month_2_2012
     new_month = Month.new(2, 2012)
-    assert_equal(29, new_month.month_days)
+    assert_equal(29, new_month.num_month_days)
   end
 
   def test_09_test_days_in_month_9_2012
     new_month = Month.new(9, 2012)
-    assert_equal(30, new_month.month_days)
+    assert_equal(30, new_month.num_month_days)
   end
 
   def test_10_test_days_in_month_2_2015
     new_month = Month.new(2, 2015)
-    assert_equal(28, new_month.month_days)
+    assert_equal(28, new_month.num_month_days)
   end
 
   def test_11_test_days_in_month_2_1900
     new_month = Month.new(2, 1900)
-    assert_equal(28, new_month.month_days)
+    assert_equal(28, new_month.num_month_days)
   end
 
   def test_12_test_days_in_month_2_2000
     new_month = Month.new(2, 2000)
-    assert_equal(29, new_month.month_days)
+    assert_equal(29, new_month.num_month_days)
   end
 
   def test_13_formatted_month_array_1_2012
     new_month = Month.new(1, 2012)
-    num_days = new_month.month_days
+    num_days = new_month.num_month_days
     assert_equal([' 1', ' 2', ' 3', ' 4', ' 5', ' 6', ' 7', ' 8', ' 9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'],
       new_month.month_array)
   end
 
   def test_14_formatted_month_array_2_2012
     new_month = Month.new(2, 2000)
-    num_days = new_month.month_days
+    num_days = new_month.num_month_days
     assert_equal([' 1', ' 2', ' 3', ' 4', ' 5', ' 6', ' 7', ' 8', ' 9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29'],
       new_month.month_array)
   end
 
   def test_15_formatted_month_array_1_2012
     new_month = Month.new(2, 1900)
-    num_days = new_month.month_days
+    num_days = new_month.num_month_days
     assert_equal([' 1', ' 2', ' 3', ' 4', ' 5', ' 6', ' 7', ' 8', ' 9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28'],
       new_month.month_array)
   end
   def test_16_formatted_month_array_1_2012
     new_month = Month.new(9, 2012)
-    num_days = new_month.month_days
+    num_days = new_month.num_month_days
     assert_equal([' 1', ' 2', ' 3', ' 4', ' 5', ' 6', ' 7', ' 8', ' 9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30'],
       new_month.month_array)
   end
@@ -110,7 +110,7 @@ class TestMonth < MiniTest::Unit::TestCase
     assert_equal([['      May 2012'], ['Su Mo Tu We Th Fr Sa']], new_month.head_rows(false))
   end
 
-  def test_21_weeks_strings_9_2012
+  def test_21_month_constructor_9_2012
     new_month = Month.new(9, 2012)
     assert_equal(
 ["     September      ",
@@ -121,10 +121,10 @@ class TestMonth < MiniTest::Unit::TestCase
 "16 17 18 19 20 21 22",
 "23 24 25 26 27 28 29",
 "30                  "],
-      new_month.week_strings(true))
+      new_month.month_constructor(true))
   end
 
-  def test_22_weeks_strings_1_2012
+  def test_22_month_constructor_1_2012
     new_month = Month.new(1, 2012)
     assert_equal(
 ["      January       ",
@@ -135,10 +135,10 @@ class TestMonth < MiniTest::Unit::TestCase
 "22 23 24 25 26 27 28",
 "29 30 31            ",
 "                    "],
-      new_month.week_strings(true))
+      new_month.month_constructor(true))
   end
 
-  def test_23_weeks_strings_5_2012
+  def test_23_month_constructor_5_2012
     new_month = Month.new(5, 2012)
     assert_equal(
 ["        May         ",
@@ -149,10 +149,10 @@ class TestMonth < MiniTest::Unit::TestCase
 "20 21 22 23 24 25 26",
 "27 28 29 30 31      ",
 "                    "],
-      new_month.week_strings(true))
+      new_month.month_constructor(true))
   end
 
-  def test_24_weeks_strings_2_2000
+  def test_24_month_constructor_2_2000
     new_month = Month.new(2, 2000)
     assert_equal(
 ["   February 2000",
@@ -163,10 +163,10 @@ class TestMonth < MiniTest::Unit::TestCase
 "20 21 22 23 24 25 26",
 "27 28 29            ",
 "                    "],
-      new_month.week_strings(false))
+      new_month.month_constructor(false))
   end
 
-  def test_25_weeks_strings_2_1900
+  def test_25_month_constructor_2_1900
     new_month = Month.new(2, 1900)
     assert_equal(
 ["   February 1900",
@@ -177,10 +177,10 @@ class TestMonth < MiniTest::Unit::TestCase
 "18 19 20 21 22 23 24",
 "25 26 27 28         ",
 "                    "],
-      new_month.week_strings(false))
+      new_month.month_constructor(false))
   end
 
-  def test_26_weeks_strings_2_2015
+  def test_26_month_constructor_2_2015
     new_month = Month.new(2, 2015)
     assert_equal(
 ["      February      ",
@@ -191,10 +191,10 @@ class TestMonth < MiniTest::Unit::TestCase
 "22 23 24 25 26 27 28",
 "                    ",
 "                    "],
-      new_month.week_strings(true))
+      new_month.month_constructor(true))
   end
 
-  def test_27_weeks_strings_12_2012
+  def test_27_month_constructor_12_2012
     new_month = Month.new(12, 2012)
     assert_equal(
 ["      December      ",
@@ -205,10 +205,10 @@ class TestMonth < MiniTest::Unit::TestCase
 "16 17 18 19 20 21 22",
 "23 24 25 26 27 28 29",
 "30 31               "],
-      new_month.week_strings(true))
+      new_month.month_constructor(true))
   end
 
-  def test_28_weeks_strings_9_2012
+  def test_28_month_constructor_9_2012
     new_month = Month.new(9, 2012)
     assert_equal(
 ["   September 2012",
@@ -220,10 +220,10 @@ class TestMonth < MiniTest::Unit::TestCase
 "23 24 25 26 27 28 29",
 "30                  ",
 "                    "],
-      new_month.week_strings(false))
+      new_month.month_constructor(false))
   end
 
-  def test_29_weeks_strings_12_2015
+  def test_29_month_constructor_12_2015
     new_month = Month.new(12, 2015)
     assert_equal(
 ["      December      ",
@@ -234,7 +234,7 @@ class TestMonth < MiniTest::Unit::TestCase
 "20 21 22 23 24 25 26",
 "27 28 29 30 31      ",
 "                    "],
-      new_month.week_strings(true))
+      new_month.month_constructor(true))
   end
 
 end

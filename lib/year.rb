@@ -35,7 +35,7 @@ class Year
     cal_month_array = []
     formatted_year = month_nums_array.each do |month_num|
       new_month = Month.new(month_num, @year)
-      month_array = new_month.week_strings(true)
+      month_array = new_month.month_constructor(true)
       cal_month_array.push(month_array)
     end
     quarters = quarter_array(cal_month_array)

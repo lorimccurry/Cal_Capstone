@@ -72,36 +72,27 @@ class Month
     month_array = (1..num_days).to_a
 
     formatted_array = month_array.map do |day|
-      if day < 10
-        " #{day}"
-      else
-        day.to_s
-      end
+      day < 10 ? " #{day}" : day.to_s
     end
   end
 
-  def week_strings(year_print_boolean)
+  def month_constructor(year_print_boolean)
     day_one = convert_zeller
     add_space = "  "
-    day_array = self.month_array
+    month_days_array = self.month_array
+    weeks = []
 
     #adds 2 spaces/day to start of day array to line up day one
     #under proper day of the week
-    day_one.times do
-      day_array.unshift(add_space)
-    end
+    day_one.times {month_days_array.unshift(add_space)}
 
-    weeks = []
-    day_array.each_slice(7) do |row|
-      weeks << row
-    end
+    month_days_array.each_slice(7) {|row| weeks << row}
+
 
     #adds 2 spaces/day to end of week to allow last week = 20 spaces
     weeks.each do |week|
       if week.length < 7
-        (7 - week.length).times do
-        week << add_space
-        end
+        (7 - week.length).times {week << add_space}
       end
     end
 
@@ -119,6 +110,7 @@ class Month
     elsif year_print_boolean == false
       weeks << blank_row
     end
+
     weeks.map {|week| week.join(" ") }
   end
 

@@ -27,7 +27,7 @@ end
 
 if month
   new_month = Month.new(month, year)
-  month_array = new_month.week_strings(false)
+  month_array = new_month.month_constructor(false)
   puts month_array.join("\n")
 else
   new_year = Year.new(year)
