@@ -23,7 +23,10 @@ class Month
   end
 
   def head_rows(year_print_boolean)
-    month_names = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    month_names = ["January", "February", "March",
+      "April", "May", "June",
+      "July", "August", "September",
+      "October", "November", "December"]
     name = month_names[@month - 1]
 
     header = []
@@ -35,7 +38,7 @@ class Month
     header << second_row = ["Su Mo Tu We Th Fr Sa"]
   end
 
-  def month_days
+  def num_month_days
     leap_year
 
     thirty_one_day_month = [1, 3, 5, 7, 8, 10, 12]
@@ -65,14 +68,14 @@ class Month
   end
 
   def month_array
-    num_days = self.month_days
+    num_days = self.num_month_days
     month_array = (1..num_days).to_a
 
-    formatted_array = month_array.map do |num|
-      if num < 10
-        " #{num}"
+    formatted_array = month_array.map do |day|
+      if day < 10
+        " #{day}"
       else
-        num.to_s
+        day.to_s
       end
     end
   end
