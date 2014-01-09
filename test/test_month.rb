@@ -113,7 +113,7 @@ class TestMonth < MiniTest::Unit::TestCase
   def test_21_weeks_strings_9_2012
     new_month = Month.new(9, 2012)
     assert_equal(
-    ["     September",
+["     September      ",
 "Su Mo Tu We Th Fr Sa",
 "                   1",
 " 2  3  4  5  6  7  8",
@@ -197,7 +197,7 @@ class TestMonth < MiniTest::Unit::TestCase
   def test_27_weeks_strings_12_2012
     new_month = Month.new(12, 2012)
     assert_equal(
-["      December",
+["      December      ",
 "Su Mo Tu We Th Fr Sa",
 "                   1",
 " 2  3  4  5  6  7  8",
@@ -226,7 +226,7 @@ class TestMonth < MiniTest::Unit::TestCase
   def test_29_weeks_strings_12_2015
     new_month = Month.new(12, 2015)
     assert_equal(
-["      December",
+["      December      ",
 "Su Mo Tu We Th Fr Sa",
 "       1  2  3  4  5",
 " 6  7  8  9 10 11 12",

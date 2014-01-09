@@ -25,15 +25,10 @@ class Month
   def head_rows(year_print_boolean)
     month_names = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     name = month_names[@month - 1]
-    end_of_quarter = ["March", "June", "September", "December"]
 
     header = []
     if year_print_boolean == true
-      if end_of_quarter.include? name
-        header << first_row = ["#{name}".center(20).rstrip]
-      else
-        header << first_row = ["#{name}".center(20)]
-      end
+      header << first_row = ["#{name}".center(20)]
     else
       header << first_row = ["#{name} #{@year}".center(20).rstrip]
     end
