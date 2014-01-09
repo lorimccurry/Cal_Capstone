@@ -52,7 +52,7 @@ class TestYear < MiniTest::Unit::TestCase
 "21 22 23 24 25 26 27  18 19 20 21 22 23 24  16 17 18 19 20 21 22",
 "28 29 30 31           25 26 27 28 29 30     23 24 25 26 27 28 29",
 "                                            30 31"]
-    assert_equal(expected, new_year.year_formatted_array)
+    assert_equal(expected, new_year.year_constructor)
   end
 
   def test_04_year_formatted_for_printing_1900
@@ -91,7 +91,7 @@ class TestYear < MiniTest::Unit::TestCase
 "21 22 23 24 25 26 27  18 19 20 21 22 23 24  16 17 18 19 20 21 22",
 "28 29 30 31           25 26 27 28 29 30     23 24 25 26 27 28 29",
 "                                            30 31"]
-    assert_equal(expected, new_year.year_formatted_array)
+    assert_equal(expected, new_year.year_constructor)
   end
 
   def test_05_year_formatted_for_printing_2000
@@ -130,7 +130,7 @@ class TestYear < MiniTest::Unit::TestCase
 "22 23 24 25 26 27 28  19 20 21 22 23 24 25  17 18 19 20 21 22 23",
 "29 30 31              26 27 28 29 30        24 25 26 27 28 29 30",
 "                                            31"]
-    assert_equal(expected, new_year.year_formatted_array)
+    assert_equal(expected, new_year.year_constructor)
   end
 
   def test_06_year_formatted_for_printing_3000
@@ -169,7 +169,7 @@ class TestYear < MiniTest::Unit::TestCase
 "19 20 21 22 23 24 25  16 17 18 19 20 21 22  21 22 23 24 25 26 27",
 "26 27 28 29 30 31     23 24 25 26 27 28 29  28 29 30 31",
 "                      30"]
-    assert_equal(expected, new_year.year_formatted_array)
+    assert_equal(expected, new_year.year_constructor)
   end
 
   def test_07_year_formatted_for_printing_2015
@@ -208,7 +208,7 @@ class TestYear < MiniTest::Unit::TestCase
 "18 19 20 21 22 23 24  22 23 24 25 26 27 28  20 21 22 23 24 25 26",
 "25 26 27 28 29 30 31  29 30                 27 28 29 30 31",
 ""]
-    assert_equal(expected, new_year.year_formatted_array)
+    assert_equal(expected, new_year.year_constructor)
   end
 
 end

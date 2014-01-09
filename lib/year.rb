@@ -10,7 +10,7 @@ class Year
     first_row = "#{@year}".center(60).rstrip
   end
 
-  def year_formatted_array
+  def year_constructor
     quarters_array = year_array_raw
 
     index_quarters_in_year = 3

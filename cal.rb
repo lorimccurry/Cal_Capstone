@@ -31,6 +31,6 @@ if month
   puts month_array.join("\n")
 else
   new_year = Year.new(year)
-  year_array = new_year.year_formatted_array
+  year_array = new_year.year_constructor
   puts year_array.join("\n")
 end

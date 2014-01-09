@@ -14,12 +14,12 @@ class Month
       month += 12
     end
 
-    day_one = (1 + ((month + 1)*26)/10 + year + (year/4) + 6*(year/100) + (year/400)) % 7
+    zeller_day_one = (1 + ((month + 1)*26)/10 + year + (year/4) + 6*(year/100) + (year/400)) % 7
   end
 
   def convert_zeller
-    self.zeller == 0 ? day_one = (self.zeller + 6) : day_one = (self.zeller - 1)
-    day_one
+    self.zeller == 0 ? cal_day_one = (self.zeller + 6) : cal_day_one = (self.zeller - 1)
+    cal_day_one
   end
 
   def head_rows(year_print_boolean)
