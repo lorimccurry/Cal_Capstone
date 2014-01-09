@@ -42,17 +42,11 @@ class Month
     thirty_day_month = [4, 6, 9, 11]
 
     if @month == 2
-      if leap_year == true
-        num_days = 29
-      else
-        num_days = 28
-      end
+      leap_year == true ? num_days = 29 : num_days = 28
+      num_days
     else
-      if thirty_one_day_month.include? @month
-        num_days = 31
-      elsif thirty_day_month.include? @month
-        num_days = 30
-      end
+      return num_days = 31 if thirty_one_day_month.include? @month
+      return num_days = 30 if thirty_day_month.include? @month
     end
   end
 
