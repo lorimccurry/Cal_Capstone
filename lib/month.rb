@@ -71,37 +71,44 @@ class Month
     num_days = self.num_month_days
     month_array = (1..num_days).to_a
 
-    formatted_array = month_array.map do |day|
+    days_array = month_array.map do |day|
       day < 10 ? " #{day}" : day.to_s
     end
+
+    day_one = convert_zeller
+    add_space = "  "
+    day_one.times {days_array.unshift(add_space)}
+    days_array
   end
 
   def month_constructor(year_print_boolean)
-    day_one = convert_zeller
     add_space = "  "
     month_days_array = self.month_array
     weeks = []
 
-    #adds 2 spaces/day to start of day array to line up day one
-    #under proper day of the week
-    day_one.times {month_days_array.unshift(add_space)}
+    create_weeks(month_days_array, add_space, weeks)
+    attach_header(year_print_boolean, weeks)
+    add_blank_rows(year_print_boolean, weeks)
 
+    weeks.map {|week| week.join(" ") }
+  end
+
+    def create_weeks(month_days_array, add_space, weeks)
     month_days_array.each_slice(7) {|row| weeks << row}
-
-
-    #adds 2 spaces/day to end of week to allow last week = 20 spaces
     weeks.each do |week|
       if week.length < 7
         (7 - week.length).times {week << add_space}
       end
     end
+  end
 
-    #adds month and week headers to week array; reversed order so would
-    #attach to week array with month header first
+  def attach_header(year_print_boolean, weeks)
     head_rows(year_print_boolean).reverse_each do |header_item|
       weeks.unshift(header_item)
     end
+  end
 
+  def add_blank_rows(year_print_boolean, weeks)
     blank_row = ["                    "]
     if year_print_boolean == true && weeks.length <= 7
       until weeks.length == 8
@@ -110,8 +117,6 @@ class Month
     elsif year_print_boolean == false
       weeks << blank_row
     end
-
-    weeks.map {|week| week.join(" ") }
   end
 
 end
